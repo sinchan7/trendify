@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { TrendingItem } from '@/types/trending';
 import Image from 'next/image';
