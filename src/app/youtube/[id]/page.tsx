@@ -1,19 +1,16 @@
-'use client';
-
-import { use } from 'react';
 import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
-export default function YouTubeItemPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
-  const resolvedParams = use(params);
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function YouTubeItemPage({ params }: PageProps) {
   return (
     <main>
       <Navbar />
-      <DetailPage category="YouTube" id={resolvedParams.id} />
+      <DetailPage category="YouTube" id={params.id} />
     </main>
   );
 } 

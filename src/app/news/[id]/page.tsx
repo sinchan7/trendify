@@ -1,19 +1,16 @@
-'use client';
-
-import { use } from 'react';
 import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
-export default function NewsItemPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
-  const resolvedParams = use(params);
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function NewsItemPage({ params }: PageProps) {
   return (
     <main>
       <Navbar />
-      <DetailPage category="News" id={resolvedParams.id} />
+      <DetailPage category="News" id={params.id} />
     </main>
   );
 } 

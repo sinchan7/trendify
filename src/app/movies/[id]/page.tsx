@@ -1,10 +1,19 @@
 import DetailPage from '@/components/DetailPage'
+import Navbar from '@/components/Navbar'
 
-export default function MovieDetailPage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export default async function MovieDetailPage({ params }: PageProps) {
   return (
-    <DetailPage 
-      category="Movies"
-      id={params.id}
-    />
+    <main>
+      <Navbar />
+      <DetailPage 
+        category="Movies"
+        id={params.id}
+      />
+    </main>
   )
 } 

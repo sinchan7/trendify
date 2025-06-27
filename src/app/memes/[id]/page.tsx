@@ -1,13 +1,12 @@
 import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
-interface Props {
-  params: {
-    id: string;
-  };
+interface PageProps {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function MemesItemPage({ params }: Props) {
+export default async function MemesItemPage({ params }: PageProps) {
   return (
     <main>
       <Navbar />

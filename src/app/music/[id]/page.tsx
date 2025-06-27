@@ -1,19 +1,16 @@
-'use client';
-
-import { use } from 'react';
 import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
-export default function MusicItemPage({
-  params,
-}: {
+interface PageProps {
   params: { id: string };
-}) {
-  const resolvedParams = use(params);
+  searchParams: { [key: string]: string | string[] | undefined };
+}
+
+export default async function MusicItemPage({ params }: PageProps) {
   return (
     <main>
       <Navbar />
-      <DetailPage category="Music" id={resolvedParams.id} />
+      <DetailPage category="Music" id={params.id} />
     </main>
   );
 } 
