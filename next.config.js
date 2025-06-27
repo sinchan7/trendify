@@ -13,13 +13,14 @@ const nextConfig = {
         hostname: 'media.formula1.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.formula1.com',
+        port: '',
+        pathname: '/**',
       }
-    ],
-    domains: [
-      'images.unsplash.com',
-      'media.formula1.com',
-      'www.formula1.com'
-    ],
+    ]
   },
 };
 

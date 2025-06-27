@@ -2,7 +2,6 @@
 
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { Metadata } from "next";
 import PageTransition from "@/components/PageTransition";
 import LoaderWrapper from "@/components/LoaderWrapper";
 

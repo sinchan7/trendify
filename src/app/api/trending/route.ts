@@ -310,7 +310,7 @@ Celebrities and influencers have joined in on the trend, creating their own vers
       creator: '@warnerbros',
       platform: 'Official',
       shares: 1200000,
-      link: 'https://www.dunethemovie.com',
+      link: 'https://www.dunemovie.com/',
       tags: ['Dune', 'Sci-Fi', 'Timothée Chalamet', 'Zendaya', 'Box Office'],
       fullContent: `'Dune: Part Two' has exceeded all expectations, delivering a visually stunning and emotionally resonant continuation of Frank Herbert's epic saga. Director Denis Villeneuve's masterful vision brings the desert planet of Arrakis to life with breathtaking scale and detail. The film's stellar cast, led by Timothée Chalamet and Zendaya, delivers powerful performances that have captivated audiences worldwide. Critics are hailing it as a landmark achievement in science fiction cinema, praising its ambitious scope, technical excellence, and faithful adaptation of the source material.`
     },
@@ -355,7 +355,7 @@ Celebrities and influencers have joined in on the trend, creating their own vers
       creator: '@marvel',
       platform: 'Official',
       shares: 1050000,
-      link: 'https://www.marvel.com/deadpool-wolverine',
+      link: 'https://www.marvel.com/movies/deadpool-and-wolverine',
       tags: ['Marvel', 'Deadpool', 'Wolverine', 'Ryan Reynolds', 'Hugh Jackman'],
       fullContent: `The first trailer for 'Deadpool & Wolverine' has shattered all-time viewing records, amassing an unprecedented number of views within 24 hours of release. The highly anticipated Marvel film brings together Ryan Reynolds' Deadpool and Hugh Jackman's Wolverine in what promises to be an action-packed, humor-filled adventure. Fans are particularly excited about the chemistry between the two leads and the film's apparent embrace of both characters' signature styles. The trailer's success signals massive anticipation for this unique Marvel crossover event.`
     },
@@ -370,7 +370,7 @@ Celebrities and influencers have joined in on the trend, creating their own vers
       creator: '@searchlight',
       platform: 'Official',
       shares: 820000,
-      link: 'https://www.searchlightpictures.com/poorthings',
+      link: 'https://www.searchlightpictures.com/poor-things/',
       tags: ['Poor Things', 'Emma Stone', 'Yorgos Lanthimos', 'Drama', 'Awards'],
       fullContent: `'Poor Things' continues to gather acclaim for its bold, imaginative storytelling and Emma Stone's fearless performance. Director Yorgos Lanthimos has created a visually stunning and thematically rich film that challenges conventions and pushes creative boundaries. The film's unique blend of period drama, science fiction, and dark comedy has resonated with critics and audiences alike, earning it numerous accolades and generating serious awards buzz. Stone's portrayal has been particularly celebrated for its complexity and emotional depth.`
     },
@@ -385,7 +385,7 @@ Celebrities and influencers have joined in on the trend, creating their own vers
       creator: '@legendary',
       platform: 'Official',
       shares: 780000,
-      link: 'https://www.godzillaxkong.com',
+      link: 'https://www.godzillaxkongmovie.com/',
       tags: ['Godzilla', 'Kong', 'MonsterVerse', 'Action', 'Sci-Fi'],
       fullContent: `'Godzilla x Kong: The New Empire' has roared into theaters, delivering an explosive combination of spectacular monster battles and surprisingly nuanced storytelling. The latest entry in the MonsterVerse franchise builds on its predecessors while taking the story in bold new directions. The film's groundbreaking visual effects bring the titular titans to life with unprecedented detail, while the human drama provides meaningful context to the epic-scale conflicts. Audiences and critics alike have praised the movie's balance of action spectacle and emotional resonance.`
     }

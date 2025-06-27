@@ -1,19 +1,17 @@
-'use client';
-
-import { use } from 'react';
 import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
-export default function MemesItemPage({
-  params,
-}: {
-  params: { id: string };
-}) {
-  const resolvedParams = use(params);
+interface Props {
+  params: {
+    id: string;
+  };
+}
+
+export default function MemesItemPage({ params }: Props) {
   return (
     <main>
       <Navbar />
-      <DetailPage category="Memes" id={resolvedParams.id} />
+      <DetailPage category="Memes" id={params.id} />
     </main>
   );
 } 

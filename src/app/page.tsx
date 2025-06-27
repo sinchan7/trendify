@@ -91,11 +91,11 @@ export default function Home() {
                 <FireIcon className="h-16 w-16 mb-6 text-yellow-400" />
               </motion.div>
               <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-white leading-tight">
-                Discover What's<br />Trending Now
+                Discover What&apos;s<br />Trending Now
               </h1>
               <p className="text-xl text-gray-200 leading-relaxed">
                 Your one-stop destination for the latest trends in news, music, and memes.
-                Stay updated with what's happening around the world in real-time.
+                Stay updated with what&apos;s happening around the world in real-time.
               </p>
             </motion.div>
 
@@ -130,7 +130,7 @@ export default function Home() {
                         whileHover={{ scale: 1.05 }}
                       >
                         <span>View all {category}</span>
-                        <span className="text-xl">→</span>
+                        <span className="text-xl">&rarr;</span>
                       </motion.a>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -168,7 +168,7 @@ export default function Home() {
                       whileHover={{ scale: 1.05 }}
                     >
                       <span>View all YouTube</span>
-                      <span className="text-xl">→</span>
+                      <span className="text-xl">&rarr;</span>
                     </motion.a>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

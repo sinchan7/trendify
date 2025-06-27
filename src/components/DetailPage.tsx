@@ -25,6 +25,16 @@ export default function DetailPage({ category, id }: DetailPageProps) {
         setLoading(true);
         setError(null);
 
+        // For memes, redirect immediately to Instagram
+        if (category === 'Memes') {
+          const response = await fetch(`/api/trending?id=${id}`);
+          const data = await response.json();
+          if (data.link) {
+            window.location.href = data.link;
+            return;
+          }
+        }
+
         const [itemResponse, relatedResponse] = await Promise.all([
           fetch(`/api/trending?id=${id}`),
           fetch(`/api/trending?category=${category.toLowerCase()}`),
@@ -46,9 +56,9 @@ export default function DetailPage({ category, id }: DetailPageProps) {
 
         setItem(itemData);
         setRelatedItems(relatedData.filter((i: TrendingItem) => i.id.toString() !== id.toString()).slice(0, 3));
-      } catch (error) {
-        console.error('Error fetching item details:', error);
-        setError(error instanceof Error ? error.message : 'Failed to load content');
+      } catch (err) {
+        console.error('Error fetching item details:', err);
+        setError(err instanceof Error ? err.message : 'Failed to load content');
         setItem(null);
         setRelatedItems([]);
       } finally {
@@ -101,30 +111,6 @@ export default function DetailPage({ category, id }: DetailPageProps) {
       window.location.href = item.link;
     }
   };
-
-  useEffect(() => {
-    const fetchItem = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(`/api/trending?category=${category.toLowerCase()}&id=${id}`);
-        const data = await response.json();
-        
-        // For memes, redirect immediately to Instagram
-        if (category === 'Memes' && data.link) {
-          window.location.href = data.link;
-          return;
-        }
-        
-        setItem(data);
-      } catch (error) {
-        setError('Failed to load content');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchItem();
-  }, [category, id]);
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
