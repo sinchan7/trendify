@@ -2,15 +2,17 @@ import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
 interface PageProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: {
+    id: string;
+  };
 }
 
-export default async function NewsItemPage({ params }: PageProps) {
+export default function NewsItemPage({ params }: PageProps) {
+  const { id } = params;
   return (
     <main>
       <Navbar />
-      <DetailPage category="News" id={params.id} />
+      <DetailPage category="News" id={id} />
     </main>
   );
 } 

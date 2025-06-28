@@ -2,15 +2,17 @@ import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
 interface PageProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: {
+    id: string;
+  };
 }
 
-export default async function SportsItemPage({ params }: PageProps) {
+export default function SportsItemPage({ params }: PageProps) {
+  const { id } = params;
   return (
     <main>
       <Navbar />
-      <DetailPage category="Sports" id={params.id} />
+      <DetailPage category="Sports" id={id} />
     </main>
   );
 } 

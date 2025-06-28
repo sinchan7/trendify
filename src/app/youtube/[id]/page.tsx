@@ -2,15 +2,17 @@ import Navbar from '@/components/Navbar';
 import DetailPage from '@/components/DetailPage';
 
 interface PageProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: {
+    id: string;
+  };
 }
 
-export default async function YouTubeItemPage({ params }: PageProps) {
+export default function YouTubeItemPage({ params }: PageProps) {
+  const { id } = params;
   return (
     <main>
       <Navbar />
-      <DetailPage category="YouTube" id={params.id} />
+      <DetailPage category="YouTube" id={id} />
     </main>
   );
 } 

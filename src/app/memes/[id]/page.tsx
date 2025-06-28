@@ -7,12 +7,15 @@ interface PageProps {
   };
 }
 
+// ✅ No 'use client'
+// ✅ No async
+// ✅ No imported PageProps
+
 export default function MemesItemPage({ params }: PageProps) {
-  const { id } = params;
   return (
     <main>
       <Navbar />
-      <DetailPage category="Memes" id={id} />
+      <DetailPage category="Memes" id={params.id} />
     </main>
   );
-} 
+}
