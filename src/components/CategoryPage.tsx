@@ -1,10 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import TrendingCard from './TrendingCard';
+import dynamic from 'next/dynamic';
 import { TrendingItem } from '@/types/trending';
 import { MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/solid';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const TrendingCard = dynamic(() => import('./TrendingCard'), {
+  loading: () => <div className="animate-pulse bg-white/10 h-96 rounded-lg"></div>,
+  ssr: true
+});
 
 interface CategoryPageProps {
   category: string;
@@ -19,34 +24,48 @@ export default function CategoryPage({ category }: CategoryPageProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
 
   useEffect(() => {
+    let mounted = true;
+
     const fetchItems = async () => {
       try {
         setLoading(true);
         setError(null);
-        // Ensure category is properly formatted for the API
         const apiCategory = category.toLowerCase();
         const response = await fetch(`/api/trending?category=${apiCategory}`);
+        
         if (!response.ok) {
           throw new Error('Failed to fetch items');
         }
+
         const data = await response.json();
+        
+        if (!mounted) return;
+
         if (data.error) {
           throw new Error(data.error);
         }
-        // Ensure we always set an array
+
         setItems(Array.isArray(data) ? data : []);
       } catch (error) {
         console.error('Error fetching trending items:', error);
-        setError('Failed to load items. Please try again later.');
-        setItems([]); // Reset items to empty array on error
+        if (mounted) {
+          setError('Failed to load items. Please try again later.');
+          setItems([]);
+        }
       } finally {
-        setLoading(false);
+        if (mounted) {
+          setLoading(false);
+        }
       }
     };
 
     if (category) {
       fetchItems();
     }
+
+    return () => {
+      mounted = false;
+    };
   }, [category]);
 
   // Get all unique tags from items

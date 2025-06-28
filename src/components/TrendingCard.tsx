@@ -1,3 +1,6 @@
+'use client';
+
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 import { ChartBarIcon, TagIcon, ClockIcon, ShareIcon, UserIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
 import moment from 'moment';
@@ -7,7 +10,7 @@ import { TrendingItem } from '@/types/trending';
 
 type TrendingCardProps = TrendingItem;
 
-export default function TrendingCard({
+function TrendingCard({
   id,
   title,
   description,
@@ -205,4 +208,6 @@ export default function TrendingCard({
       </Link>
     </motion.div>
   );
-} 
+}
+
+export default memo(TrendingCard); 
