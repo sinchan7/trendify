@@ -7,8 +7,9 @@ interface PageProps {
   };
 }
 
-export default function MusicItemPage({ params }: PageProps) {
+export default async function MusicItemPage({ params }: PageProps) {
   const { id } = params;
+  
   return (
     <main>
       <Navbar />

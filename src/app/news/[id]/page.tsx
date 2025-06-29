@@ -7,8 +7,10 @@ interface PageProps {
   };
 }
 
-export default function NewsItemPage({ params }: PageProps) {
+export default async function NewsItemPage({ params }: PageProps) {
+  // ✅ Params are already resolved, no need to await
   const { id } = params;
+  
   return (
     <main>
       <Navbar />

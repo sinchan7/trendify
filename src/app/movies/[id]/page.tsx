@@ -7,7 +7,7 @@ interface PageProps {
   };
 }
 
-export default function MovieDetailPage({ params }: PageProps) {
+export default async function MovieDetailPage({ params }: PageProps) {
   const { id } = params;
   return (
     <main>
