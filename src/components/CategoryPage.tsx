@@ -11,11 +11,11 @@ const TrendingCard = dynamic(() => import('./TrendingCard'), {
   ssr: true
 });
 
-interface CategoryPageProps {
+export default function CategoryPage({
+  category,
+}: {
   category: string;
-}
-
-export default function CategoryPage({ category }: CategoryPageProps) {
+}) {
   const [items, setItems] = useState<TrendingItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -32,13 +32,13 @@ export default function CategoryPage({ category }: CategoryPageProps) {
         setError(null);
         const apiCategory = category.toLowerCase();
         const response = await fetch(`/api/trending?category=${apiCategory}`);
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch items');
         }
 
         const data = await response.json();
-        
+
         if (!mounted) return;
 
         if (data.error) {
@@ -77,12 +77,12 @@ export default function CategoryPage({ category }: CategoryPageProps) {
   const filteredItems = (Array.isArray(items) ? items : [])
     .filter((item) => {
       if (!item) return false;
-      
-      const matchesSearch = 
+
+      const matchesSearch =
         (item.title?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
         (item.description?.toLowerCase() || '').includes(searchTerm.toLowerCase());
-      
-      const matchesTags = 
+
+      const matchesTags =
         selectedTags.length === 0 ||
         selectedTags.every((tag) => item.tags?.includes(tag));
 
@@ -92,7 +92,7 @@ export default function CategoryPage({ category }: CategoryPageProps) {
       if (sortBy === 'latest' && a.timestamp && b.timestamp) {
         return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
       }
-      return ((b.trendingScore || 0) - (a.trendingScore || 0));
+      return (b.trendingScore || 0) - (a.trendingScore || 0);
     });
 
   if (loading) {
@@ -223,4 +223,4 @@ export default function CategoryPage({ category }: CategoryPageProps) {
       </div>
     </div>
   );
-} 
+}

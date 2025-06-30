@@ -3,17 +3,22 @@
 import { useEffect, useState } from 'react';
 import { TrendingItem } from '@/types/trending';
 import Image from 'next/image';
-import { TagIcon, ArrowLeftIcon, ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid';
+import {
+  TagIcon,
+  ArrowLeftIcon,
+  ArrowTopRightOnSquareIcon,
+} from '@heroicons/react/24/solid';
 import moment from 'moment';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-interface DetailPageProps {
+export default function DetailPage({
+  category,
+  id,
+}: {
   category: string;
   id: string;
-}
-
-export default function DetailPage({ category, id }: DetailPageProps) {
+}) {
   const [item, setItem] = useState<TrendingItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -55,7 +60,11 @@ export default function DetailPage({ category, id }: DetailPageProps) {
         }
 
         setItem(itemData);
-        setRelatedItems(relatedData.filter((i: TrendingItem) => i.id.toString() !== id.toString()).slice(0, 3));
+        setRelatedItems(
+          relatedData
+            .filter((i: TrendingItem) => i.id.toString() !== id.toString())
+            .slice(0, 3)
+        );
       } catch (err) {
         console.error('Error fetching item details:', err);
         setError(err instanceof Error ? err.message : 'Failed to load content');
@@ -94,8 +103,8 @@ export default function DetailPage({ category, id }: DetailPageProps) {
         <h2 className="text-2xl font-bold text-white mb-4">
           {error || 'Content not found'}
         </h2>
-        <Link 
-          href={`/${category.toLowerCase()}`} 
+        <Link
+          href={`/${category.toLowerCase()}`}
           className="inline-flex items-center text-indigo-400 hover:text-indigo-300 mt-4"
         >
           <ArrowLeftIcon className="h-5 w-5 mr-2" />
@@ -159,19 +168,24 @@ export default function DetailPage({ category, id }: DetailPageProps) {
                 </button>
               )}
             </div>
-            <span className="text-sm text-gray-400">{moment(item.timestamp).format('MMMM D, YYYY')}</span>
+            <span className="text-sm text-gray-400">
+              {moment(item.timestamp).format('MMMM D, YYYY')}
+            </span>
           </div>
 
           <h1 className="text-3xl font-bold text-white mb-4">{item.title}</h1>
 
-          {/* Category-specific metadata */}
+          {/* Category‑specific metadata */}
           <div className="mb-6 text-gray-300">
             {item.category === 'News' && (
               <div className="flex items-center justify-between text-sm">
-                <span>By {item.author} • {item.source}</span>
+                <span>
+                  By {item.author} • {item.source}
+                </span>
                 <span>{item.readTime}</span>
               </div>
             )}
+
             {item.category === 'Music' && (
               <div className="space-y-2 text-sm">
                 <p>Artist: {item.artist}</p>
@@ -179,10 +193,15 @@ export default function DetailPage({ category, id }: DetailPageProps) {
                 <p>Duration: {item.duration}</p>
               </div>
             )}
+
             {(item.category === 'Memes' || item.category === 'YouTube') && (
               <div className="flex items-center justify-between text-sm">
-                <span>Created by {item.creator} on {item.platform}</span>
-                {item.shares && <span>{item.shares.toLocaleString()} shares</span>}
+                <span>
+                  Created by {item.creator} on {item.platform}
+                </span>
+                {item.shares && (
+                  <span>{item.shares.toLocaleString()} shares</span>
+                )}
               </div>
             )}
           </div>
@@ -216,7 +235,9 @@ export default function DetailPage({ category, id }: DetailPageProps) {
       {/* Related items */}
       {relatedItems.length > 0 && (
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-white mb-6">More from {category}</h2>
+          <h2 className="text-2xl font-bold text-white mb-6">
+            More from {category}
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedItems.map((relatedItem) => (
               <Link
@@ -237,8 +258,12 @@ export default function DetailPage({ category, id }: DetailPageProps) {
                       />
                     </div>
                   )}
-                  <h3 className="font-semibold text-white mb-2">{relatedItem.title}</h3>
-                  <p className="text-sm text-gray-300">{relatedItem.description}</p>
+                  <h3 className="font-semibold text-white mb-2">
+                    {relatedItem.title}
+                  </h3>
+                  <p className="text-sm text-gray-300">
+                    {relatedItem.description}
+                  </p>
                 </div>
               </Link>
             ))}
@@ -247,4 +272,4 @@ export default function DetailPage({ category, id }: DetailPageProps) {
       )}
     </div>
   );
-} 
+}

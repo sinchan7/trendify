@@ -7,15 +7,16 @@ interface PageProps {
   };
 }
 
-export default async function MovieDetailPage({ params }: PageProps) {
+export default async function MovieDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const { id } = params;
   return (
     <main>
       <Navbar />
-      <DetailPage 
-        category="Movies"
-        id={id}
-      />
+      <DetailPage category="Movies" id={id} />
     </main>
-  )
-} 
+  );
+}
