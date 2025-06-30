@@ -1,11 +1,5 @@
-import DetailPage from '@/components/DetailPage'
-import Navbar from '@/components/Navbar'
-
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+import DetailPage from '@/components/DetailPage';
+import Navbar from '@/components/Navbar';
 
 export default async function MovieDetailPage({
   params,
@@ -13,6 +7,7 @@ export default async function MovieDetailPage({
   params: { id: string };
 }) {
   const { id } = params;
+
   return (
     <main>
       <Navbar />
